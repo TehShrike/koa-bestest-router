@@ -1,15 +1,14 @@
-const pathMatch = require('path-match')
 const parseUrl = require('url').parse
 
-const createRouteMatcher = pathMatch()
+const processInputMaps = require('./process-input-maps')
 
 module.exports = function createRouter(methodsToRouteMaps, { set404 = false } = {}) {
 	validateInputMap(methodsToRouteMaps)
-	const methodsToRouteArrays = mapObject(methodsToRouteMaps, routeMapToArray)
+	const getRoutesForMethod = processInputMaps(methodsToRouteMaps)
 
 	return async function middleware(context, next) {
 		const { method, url } = context
-		const routes = methodsToRouteArrays[method]
+		const routes = getRoutesForMethod(method)
 
 		async function notFound() {
 			if (set404) {
@@ -22,14 +21,7 @@ module.exports = function createRouter(methodsToRouteMaps, { set404 = false } = 
 		if (routes) {
 			const path = parseUrl(url).pathname
 
-			const matched = returnFirst(routes, ({ matcher, handler }) => {
-				const params = matcher(path)
-
-				return params && {
-					params,
-					handler
-				}
-			})
+			const matched = findMatchingRoute(routes, path)
 
 			if (matched) {
 				const { params, handler } = matched
@@ -45,24 +37,14 @@ module.exports = function createRouter(methodsToRouteMaps, { set404 = false } = 
 	}
 }
 
-function orderedEntries(o) {
-	return Object.getOwnPropertyNames(o).map(key => {
-		return [ key, o[key] ]
-	})
-}
+function findMatchingRoute(routes, path) {
+	return returnFirst(routes, ({ matcher, handler }) => {
+		const params = matcher(path)
 
-function mapObject(o, fn) {
-	return orderedEntries(o).reduce((map, [ key, value ]) => {
-		map[key]  = fn(value)
-		return map
-	}, Object.create(null))
-}
-
-// [routeString]: handler
-function routeMapToArray(methodHandlers) {
-	return orderedEntries(methodHandlers).map(([ routeString, handler ]) => {
-		const matcher = createRouteMatcher(routeString)
-		return { matcher, handler }
+		return params && {
+			params,
+			handler
+		}
 	})
 }
 
