@@ -1,6 +1,6 @@
 {
   "name": "koa-bestest-router",
-  "version": "1.0.0",
+  "version": "1.0.1",
   "description": "It's just router middleware for Koa. Mutation-free, less than 100 lines",
   "main": "index.js",
   "scripts": {
