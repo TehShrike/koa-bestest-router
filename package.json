@@ -1,0 +1,24 @@
+{
+  "name": "koa-bestest-router",
+  "version": "1.0.0",
+  "description": "It's just router middleware for Koa. Mutation-free, less than 100 lines",
+  "main": "index.js",
+  "scripts": {
+    "test": "tape test.js"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/TehShrike/koa-bestest-router.git"
+  },
+  "keywords": [
+    "koa",
+    "router",
+    "middleware"
+  ],
+  "author": "TehShrike",
+  "license": "WTFPL",
+  "bugs": {
+    "url": "https://github.com/TehShrike/koa-bestest-router/issues"
+  },
+  "homepage": "https://github.com/TehShrike/koa-bestest-router#readme"
+}
