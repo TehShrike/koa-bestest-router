@@ -20,5 +20,11 @@
   "bugs": {
     "url": "https://github.com/TehShrike/koa-bestest-router/issues"
   },
-  "homepage": "https://github.com/TehShrike/koa-bestest-router#readme"
+  "homepage": "https://github.com/TehShrike/koa-bestest-router#readme",
+  "devDependencies": {
+    "tape": "4.6.3"
+  },
+  "dependencies": {
+    "path-match": "1.2.4"
+  }
 }
