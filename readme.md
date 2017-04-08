@@ -2,9 +2,9 @@
 
 The name's a bit of a joke, I was just amused by the existence of koa-router and koa-better-router.  This probably isn't the bestest Koa router.
 
-When trying to track down an issue in another router, I was shocked by how much state mutation and code they were using.
+When trying to track down an issue in another router, I was shocked by how much state mutation and code they were using.  So I wrote this.
 
-So I wrote this.  No mutations, not much code = easy to understand and debug.  Intended for simple apps.  If I need something more complex later, I'll come up with some way to compose or nest routers.
+No mutations, not much code = easy to understand and debug.  Intended for simple apps.  If I need something more complex later, I'll come up with some way to compose or nest routers.
 
 # API
 
