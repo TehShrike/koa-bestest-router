@@ -1,4 +1,5 @@
 const createRouteMatcher = require('path-match')()
+const orderedEntries = require('ordered-entries')
 
 function mapObject(o, fn) {
 	return orderedEntries(o).reduce((map, [ key, value ]) => {
@@ -12,12 +13,6 @@ function routeMapToArray(methodHandlers) {
 	return orderedEntries(methodHandlers).map(([ routeString, handler ]) => {
 		const matcher = createRouteMatcher(routeString)
 		return { matcher, handler }
-	})
-}
-
-function orderedEntries(o) {
-	return Object.getOwnPropertyNames(o).map(key => {
-		return [ key, o[key] ]
 	})
 }
 

@@ -25,6 +25,7 @@
     "tape": "4.6.3"
   },
   "dependencies": {
+    "ordered-entries": "1.0.0",
     "path-match": "1.2.4"
   }
 }
