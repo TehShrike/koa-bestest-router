@@ -4,7 +4,7 @@ The name's a bit of a joke, I was just amused by the existence of koa-router and
 
 When trying to track down an issue in another router, I was shocked by how much state mutation and code they were using.  So I wrote this.
 
-No mutations, not much code = easy to understand and debug.  Intended for simple apps.  If I need something more complex later, I'll come up with some way to compose or nest routers.
+No mutations, not much code = easy to understand and debug.  Intended for simple apps.  If you want to take it a step further, consider composing koa-bestest-router instances with [`koa-mount`](https://github.com/koajs/mount).
 
 # API
 
